@@ -1,6 +1,28 @@
-<div class="container p-2">
-  <p class="font-semibold">Hello world</p>
-  <div class="w-80 h-80">
-    <quill-editor></quill-editor>
+<div class="w-full min-h-screen flex items-center justify-center">
+  <div
+    class="w-8/12 p-5 bg-white rounded-xl bg-opacity-20 backdrop-filter backdrop-blur-lg border-solid border-gray-300 border-2 box-border shadow-2xl shadow-cyan-500/50"
+  >
+    <div class="text-white font-bold text-4xl">
+      <p>
+        Dale a tu texto<br />
+        un aspecto elegante<br />
+        y profesional con <br />
+      </p>
+      <div class="inline-block">
+        <p
+          class="typed text-[#34AFE4] overflow-hidden whitespace-nowrap w-0 font-bold"
+        >
+          Comely Text.
+        </p>
+      </div>
+    </div>
+
+    <hr class="border-t-2 w-8/12 opacity-30"/>
+
+    <div class="p-5">
+      <app-toggle-btn [type]="'Gramatica'"></app-toggle-btn>
+      <app-toggle-btn [type]="'Enriquecido'"></app-toggle-btn>
+      <quill-editor></quill-editor>
+    </div>
   </div>
 </div>
