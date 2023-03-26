@@ -1,0 +1,52 @@
+<div
+  class="flex justify-between w-full"
+  *ngIf="!decrease; else secondView"
+  [@slideInOut]
+>
+  <div class="text-white font-bold text-4xl">
+    <p>
+      Dale a tu texto<br />
+      un aspecto elegante<br />
+      y profesional con <br />
+    </p>
+    <div class="inline-block">
+      <p
+        class="typed text-[#34AFE4] overflow-hidden whitespace-nowrap w-0 font-bold"
+      >
+        Comely Text.
+      </p>
+    </div>
+  </div>
+  <mat-icon class="text-[#34AFE4] text-[50px] !w-[50px] !h-[50px]"
+    >data_object</mat-icon
+  >
+</div>
+
+<ng-template #secondView>
+  <div class="flex justify-between items-center w-full">
+    <div class="inline-block">
+      <p
+        class="typed text-[#34AFE4] overflow-hidden whitespace-nowrap w-0 font-bold text-2xl !m-0"
+      >
+        Comely Text.
+      </p>
+    </div>
+    <mat-icon class="text-[#34AFE4] text-[36px] !w-[36px] !h-[36px]"
+      >data_object</mat-icon
+    >
+  </div>
+</ng-template>
+
+<hr
+  class="border-t-2 w-full opacity-30"
+  [ngClass]="decrease ? 'mt-1' : 'mt-0'"
+/>
+
+<div class="w-full flex justify-center">
+  <mat-icon
+    (click)="decrease = !decrease"
+    class="transition-all text-[36px] !w-[36px] !h-[36px] text-white"
+    [ngClass]="decrease ? 'rotate-180' : 'rotate-0'"
+    >expand_less</mat-icon
+  >
+</div>

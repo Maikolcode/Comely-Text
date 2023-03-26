@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-toggle-btn',
@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ToggleBtnComponent implements OnInit {
   @Input() type!: 'Enriquecido' | 'Gramatica';
+  @Output() toggle = new EventEmitter<any>();
+
   toggleStatus: boolean = false;
 
   constructor() { }
@@ -13,8 +15,10 @@ export class ToggleBtnComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  handleChangeToggle(): void {
-    console.log(this.toggleStatus)
+  handleChangeToggle(type: string): void {
+    this.toggle.emit({
+      type,
+      status: this.toggleStatus
+    })
   }
-
 }

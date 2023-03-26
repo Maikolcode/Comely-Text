@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $codely-text-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$codely-text-theme: mat.define-light-theme((
-  color: (
-    primary: $codely-text-primary,
-    accent: $codely-text-accent,
-    warn: $codely-text-warn,
+$codely-text-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $codely-text-primary,
+      accent: $codely-text-accent,
+      warn: $codely-text-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -60,7 +61,7 @@ $codely-text-theme: mat.define-light-theme((
 
 body,
 .ql-editor {
-  font-family: "Objectivity", sans-serif;
+  font-family: "Objectivity", sans-serif !important;
 }
 
 body {
@@ -74,6 +75,10 @@ body {
   border-right: 3px solid;
   width: 0;
   animation: typing 1.5s steps(30, end) forwards, blinking 1s infinite;
+}
+
+.cursor-animated {
+  animation: blinking 1s infinite;
 }
 
 @keyframes typing {
@@ -90,7 +95,7 @@ body {
     border-right-color: transparent;
   }
   50% {
-    border-right-color: #3DBAF0;
+    border-right-color: #3dbaf0;
   }
   100% {
     border-right-color: transparent;
@@ -99,5 +104,50 @@ body {
 
 input:checked ~ .dot {
   transform: translateX(100%);
-  background-color: #34AFE4;
+  background-color: #34afe4;
+}
+
+.mat-icon {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Quill Editor Styles
+
+.ql-toolbar.ql-snow,
+.ql-editor {
+  background-color: white;
+}
+
+.enrich {
+  .ql-toolbar.ql-snow,
+  .ql-container.ql-snow,
+  .ql-editor {
+    border: none;
+  }
+
+  .ql-toolbar.ql-snow {
+    border-radius: 5px 5px 0 0;
+    border-bottom: 0;
+  }
+
+  .ql-container.ql-snow,
+  .ql-editor {
+    border-radius: 0 0 5px 5px;
+  }
+}
+
+.normal {
+  .ql-toolbar.ql-snow {
+    display: none;
+  }
+
+  .ql-container.ql-snow,
+  .ql-editor {
+    border-radius: 5px;
+    border: none;
+  }
 }

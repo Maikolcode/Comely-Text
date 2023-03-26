@@ -2,27 +2,21 @@
   <div
     class="w-8/12 p-5 bg-white rounded-xl bg-opacity-20 backdrop-filter backdrop-blur-lg border-solid border-gray-300 border-2 box-border shadow-2xl shadow-cyan-500/50"
   >
-    <div class="text-white font-bold text-4xl">
-      <p>
-        Dale a tu texto<br />
-        un aspecto elegante<br />
-        y profesional con <br />
-      </p>
-      <div class="inline-block">
-        <p
-          class="typed text-[#34AFE4] overflow-hidden whitespace-nowrap w-0 font-bold"
-        >
-          Comely Text.
-        </p>
-      </div>
-    </div>
-
-    <hr class="border-t-2 w-8/12 opacity-30"/>
-
+    <app-header></app-header>
     <div class="p-5">
-      <app-toggle-btn [type]="'Gramatica'"></app-toggle-btn>
-      <app-toggle-btn [type]="'Enriquecido'"></app-toggle-btn>
-      <quill-editor></quill-editor>
+      <div class="flex gap-5 py-3">
+        <app-toggle-btn
+          [type]="'Gramatica'"
+          (toggle)="toggleChangeBy($event)"
+        ></app-toggle-btn>
+        <app-toggle-btn
+          [type]="'Enriquecido'"
+          (toggle)="toggleChangeBy($event)"
+        ></app-toggle-btn>
+      </div>
+      <quill-editor
+        [ngClass]="enrichStatus ? 'enrich' : 'normal'"
+      ></quill-editor>
     </div>
   </div>
 </div>
