@@ -16,5 +16,5 @@
     </div>
     <div class="text-white h-8 flex items-center select-none">Habilitar {{ type }}</div>
   </label>
-  <mat-icon matTooltip="Info about the action">info</mat-icon>
+  <mat-icon class="text-white" [matTooltip]="descriptions[type]" [matTooltipPosition]="'right'">info</mat-icon>
 </div>

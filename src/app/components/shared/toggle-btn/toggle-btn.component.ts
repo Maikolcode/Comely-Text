@@ -7,8 +7,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class ToggleBtnComponent implements OnInit {
   @Input() type!: 'Enriquecido' | 'Gramatica';
   @Output() toggle = new EventEmitter<any>();
-
   toggleStatus: boolean = false;
+  descriptions = {
+    Enriquecido: 'Activar el texto con estilos',
+    Gramatica: 'Activar Grammarly'
+  }
 
   constructor() { }
 

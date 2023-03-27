@@ -15,7 +15,10 @@
         ></app-toggle-btn>
       </div>
       <quill-editor
+        [modules]="toolbar"
         [ngClass]="enrichStatus ? 'enrich' : 'normal'"
+        [(ngModel)]="htmlContent"
+        (ngModelChange)="textChanged()"
       ></quill-editor>
     </div>
   </div>
