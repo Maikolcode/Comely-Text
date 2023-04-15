@@ -44,7 +44,7 @@
 
 <div class="w-full flex justify-center">
   <mat-icon
-    (click)="decrease = !decrease"
+    (click)="handleChangeView()"
     class="transition-all text-[36px] !w-[36px] !h-[36px] text-white"
     [ngClass]="decrease ? 'rotate-180' : 'rotate-0'"
     >expand_less</mat-icon

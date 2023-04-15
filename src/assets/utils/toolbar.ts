@@ -1,4 +1,4 @@
-export const toolbarOptions = {
+export const ToolbarOptions = {
   toolbar: {
     container: [
       ['bold', 'italic', 'underline', 'strike', 'clean'],

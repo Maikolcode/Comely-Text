@@ -1,23 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { toolbarOptions } from 'src/assets/utils/toolbar';
+import { Toggle, ToggleFlags } from 'src/app/models/toggle.model';
+import { ToolbarOptions } from 'src/assets/utils/toolbar';
+import { StoreService } from '../data/store.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  toolbar = toolbarOptions;
+  toolbar = ToolbarOptions;
   htmlContent: string = '';
-  enrichStatus: boolean = false;
+  flags: ToggleFlags = {
+    enrich: false,
+    grammar: false,
+  };
 
-  constructor() {}
+  constructor(private store: StoreService) {}
 
   ngOnInit(): void {
-    console.log(this.toolbar);
+    this.getFlagsValues();
   }
 
-  toggleChangeBy(event: any): void {
-    if (event.type === 'Enriquecido') this.enrichStatus = event.status;
+  toggleChangeBy(event: Toggle): void {
+    this.saveToggleValue(event);
+  }
+
+  saveToggleValue(event: Toggle): void {
+    this.flags[event.type] = event.status;
+    this.store.setObjectToStorage(event.type, event.status);
+  }
+
+  getFlagsValues(): void {
+    this.flags.enrich = this.flagValidationBy('enrich');
+    this.flags.grammar = this.flagValidationBy('grammar');
+  }
+
+  flagValidationBy(type: string): boolean {
+    return this.store.objectExistBy(type) ? this.store.getObjectFromStorage(type) : false;
   }
 
   textChanged(): void {

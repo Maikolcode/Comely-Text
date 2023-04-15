@@ -1,22 +1,31 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Toggle, ToggleType } from 'src/app/models/toggle.model';
 
 @Component({
   selector: 'app-toggle-btn',
   templateUrl: './toggle-btn.component.html'
 })
 export class ToggleBtnComponent {
-  @Input() type!: 'Enriquecido' | 'Gramatica';
-  @Output() toggle = new EventEmitter<any>();
-  toggleStatus: boolean = false;
+
+  @Input() type!: ToggleType;
+  @Input() status!: boolean;
+  @Output() toggle = new EventEmitter<Toggle>();
+
   descriptions = {
-    Enriquecido: 'Activar el texto con estilos',
-    Gramatica: 'Activar Grammarly (Only English Texts)'
+    enrich: {
+      text: 'Activar el texto con estilos',
+      name: 'Enriquecido'
+    },
+    grammar: {
+      text: 'Activar Grammarly (Only English Texts)',
+      name: 'Grammarly'
+    }
   }
 
-  handleChangeToggle(type: string): void {
+  handleChangeToggle(type: ToggleType): void {
     this.toggle.emit({
       type,
-      status: this.toggleStatus
+      status: this.status
     })
   }
 }

@@ -4,7 +4,7 @@
       <input
         type="checkbox"
         class="sr-only"
-        [(ngModel)]="toggleStatus"
+        [(ngModel)]="status"
         (change)="handleChangeToggle(type)"
       />
 
@@ -14,7 +14,7 @@
         class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"
       ></div>
     </div>
-    <div class="text-white h-8 flex items-center select-none">Habilitar {{ type }}</div>
+    <div class="text-white h-8 flex items-center select-none">Habilitar {{ descriptions[type].name }}</div>
   </label>
-  <mat-icon class="text-white" [matTooltip]="descriptions[type]" [matTooltipPosition]="'right'">info</mat-icon>
+  <mat-icon class="text-white" [matTooltip]="descriptions[type].text" [matTooltipPosition]="'right'">info</mat-icon>
 </div>
