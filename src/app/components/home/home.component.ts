@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   saveToggleValue(event: Toggle): void {
     this.flags[event.type] = event.status;
-    this.flags.grammar ? this.initGrammarly() : this.disconnectGrammarly();
+    if(event.type === 'grammar') this.flags.grammar ? this.initGrammarly() : this.disconnectGrammarly();
     this.store.setObjectToStorage(event.type, event.status);
   }
 

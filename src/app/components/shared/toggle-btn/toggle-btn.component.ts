@@ -23,6 +23,8 @@ export class ToggleBtnComponent {
   }
 
   handleChangeToggle(type: ToggleType): void {
+    console.log(type);
+
     this.toggle.emit({
       type,
       status: this.status
