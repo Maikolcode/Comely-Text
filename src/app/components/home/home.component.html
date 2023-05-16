@@ -23,8 +23,24 @@
       [(ngModel)]="htmlContent"
       (ngModelChange)="textChanged()"
     ></quill-editor>
-    <div class="w-full relative">
-      <grammarly-button class="absolute top-[-1rem] right-[-0.8rem]"></grammarly-button>
-    </div>
+    <footer class="w-full relative flex justify-center">
+      <section class="bg-transparent h-8 flex -top-10 absolute gap-2">
+        <span class="flex flex-grow justify-start text-[#34AFE4] font-bold text-3xl">
+          &#123;
+        </span>
+        <div class="flex justify-center items-center gap-2">
+          <mat-icon>
+            content_copy
+          </mat-icon>
+          <mat-icon>
+            backspace
+          </mat-icon>
+          <grammarly-button></grammarly-button>
+        </div>
+        <span class="flex flex-grow justify-end text-[#34AFE4] font-bold text-3xl">
+          &#125;
+        </span>
+      </section>
+    </footer>
   </div>
 </div>

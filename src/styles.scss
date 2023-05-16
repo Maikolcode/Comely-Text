@@ -118,13 +118,19 @@ input:checked ~ .dot {
 // Quill Editor Styles
 
 .ql-toolbar.ql-snow,
-.ql-editor {
+.ql-editor,
+.ql-container.ql-snow {
   background-color: white;
+}
+
+.ql-editor{
+  padding-bottom: 3rem;
 }
 
 .ql-container.ql-snow {
   height: 10rem;
   min-height: 15rem;
+  padding-bottom: 3.5em;
 }
 
 .enrich {
