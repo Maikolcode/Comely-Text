@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  grammar_client: 'your_client_id'
+  grammar_client: 'client_YMSyyV5dnvzPiZs4afBT6U'
 };
 
 /*
