@@ -1,22 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EditorConfig, GrammarlyEditorPluginElement, init } from '@grammarly/editor-sdk';
 import { Toggle, ToggleFlags } from 'src/app/models/toggle.model';
 import { ToolbarOptions } from 'src/assets/utils/toolbar';
 import { environment } from 'src/environments/environment';
 import { StoreService } from '../data/store.service';
+import { QuillEditorComponent } from 'ngx-quill';
+import { TextUtilities } from 'src/app/models/utils.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('editor') editor!: QuillEditorComponent;
   toolbar = ToolbarOptions;
   htmlContent: string = '';
+  textLength: number = 0;
   grammarlyEditor!: GrammarlyEditorPluginElement;
   flags: ToggleFlags = {
     enrich: false,
     grammar: false,
   };
+  textUtilities: TextUtilities = {
+    text: '',
+    html: ''
+  }
 
   constructor(private store: StoreService) {}
 
@@ -49,7 +57,7 @@ export class HomeComponent implements OnInit {
       const config: EditorConfig = {
         activation: 'immediate',
         autocomplete: 'off',
-        toneDetector: 'on',
+        toneDetector: 'off',
         introText:
           'Comely helps you write clearly and mistake-free.',
       };
@@ -64,7 +72,21 @@ export class HomeComponent implements OnInit {
     this.grammarlyEditor.disconnect();
   }
 
-  textChanged(): void {
-    console.log(this.htmlContent);
+  getCurrentCharacters(event: any): void {
+    if (event.event === 'text-change') {
+      if(event.html !== null) {
+        let {text, html} = event;
+        this.textUtilities = {
+          text,
+          html
+        }
+      }
+
+      this.textLength = this.editor.quillEditor.getLength() - 1;
+    }
+  }
+
+  clearText(): void {
+    this.editor.quillEditor.setText('');
   }
 }

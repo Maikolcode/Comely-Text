@@ -1,0 +1,43 @@
+<footer class="w-full relative flex justify-center">
+  <section class="bg-transparent h-8 flex -top-10 absolute gap-2">
+    <span
+      class="flex flex-grow justify-start text-[#34AFE4] font-bold text-3xl"
+    >
+      &#123;
+    </span>
+    <div class="flex justify-center items-center gap-2">
+      <grammarly-button *ngIf="flags.grammar"></grammarly-button>
+      <mat-icon
+        *ngIf="flags.enrich"
+        class="h-5 w-5 text-[21px] text-black/60"
+        matTooltip="Copiar formato"
+        (click)="copyFormat()"
+        matTooltipPosition="above"
+      >
+        file_copy
+      </mat-icon>
+      <mat-icon
+        class="h-5 w-5 text-[21px] text-black/60"
+        matTooltip="Copiar texto"
+        matTooltipPosition="above"
+        (click)="copyText()"
+      >
+        content_copy
+      </mat-icon>
+      <mat-icon
+        class="h-5 w-5 text-[21px] text-black/60"
+        matTooltip="Borrar texto"
+        matTooltipPosition="above"
+        (click)="handleCleanText()"
+      >
+        backspace
+      </mat-icon>
+    </div>
+    <span class="flex flex-grow justify-end text-[#34AFE4] font-bold text-3xl">
+      &#125;
+    </span>
+  </section>
+  <span class="absolute flex items-center right-3 h-8 -top-[38px] font-mono">
+    {{ characters }}
+  </span>
+</footer>

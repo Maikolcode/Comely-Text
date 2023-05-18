@@ -6,14 +6,13 @@ import { Toggle, ToggleType } from 'src/app/models/toggle.model';
   templateUrl: './toggle-btn.component.html'
 })
 export class ToggleBtnComponent {
-
   @Input() type!: ToggleType;
   @Input() status!: boolean;
   @Output() toggle = new EventEmitter<Toggle>();
 
   descriptions = {
     enrich: {
-      text: 'Activar el texto con estilos',
+      text: 'Activar controles de Enriquecido',
       name: 'Enriquecido'
     },
     grammar: {
@@ -23,8 +22,6 @@ export class ToggleBtnComponent {
   }
 
   handleChangeToggle(type: ToggleType): void {
-    console.log(type);
-
     this.toggle.emit({
       type,
       status: this.status

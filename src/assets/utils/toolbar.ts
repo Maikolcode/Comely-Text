@@ -3,6 +3,7 @@ export const ToolbarOptions = {
     container: [
       ['bold', 'italic', 'underline', 'strike', 'clean'],
       ['code-block'],
+      [{ 'color': [] }, { 'background': [] }],
       [{ header: 1 }, { header: 2 }],
       [{ list: 'ordered' }, { list: 'bullet' }],
       [{ script: 'sub' }, { script: 'super' }],

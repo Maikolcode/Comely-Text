@@ -127,10 +127,21 @@ input:checked ~ .dot {
   padding-bottom: 3rem;
 }
 
+.ql-editor > p {
+  margin: 0;
+}
+
 .ql-container.ql-snow {
   height: 10rem;
   min-height: 15rem;
   padding-bottom: 3.5em;
+}
+
+@media (max-width: 640px) {
+  .ql-container.ql-snow {
+    height: 20rem;
+    min-height: 25rem;
+  }
 }
 
 .enrich {
@@ -182,4 +193,21 @@ input:checked ~ .dot {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #51c2f3
+}
+
+// Material: Custom Styles
+
+:host {
+  display: flex;
+}
+
+.mat-snack-bar-container {
+  max-width: 16rem !important;
+  min-width: 6rem !important;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 2px );
+  -webkit-backdrop-filter: blur( 2px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  height: 3rem;
 }
